@@ -14,11 +14,14 @@
 </template>
 
 <script>
-defineProps({
-  name: { type: String, required: true },
-  age: { type: Number, required: true },
-  designation: { type: String, required: true },
-});
+export default {
+  name: 'Customer',
+  props: {
+    name: { type: String, required: true },
+    age: { type: Number, required: true },
+    designation: { type: String, required: true },
+  },
+};
 </script>
 
 <style></style>
