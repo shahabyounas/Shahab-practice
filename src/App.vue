@@ -1,5 +1,6 @@
 <script setup>
 import Customer from './components/Customer.vue';
+import Employee from './components/Employee.vue';
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import Customer from './components/Customer.vue';
     </div>
     <div>
       <Customer name="Shahab" age="45" designation="Huddersfield UK" />
+      <Employee />
     </div>
   </div>
 </template>
