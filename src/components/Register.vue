@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <table class="table table-hover text-center table-striped">
-        <thead class="bg-light">
+        <thead class="bg-success text-white">
           <tr>
             <th>Name</th>
             <th>Email</th>
