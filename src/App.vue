@@ -2,6 +2,7 @@
 import Customer from './components/Customer.vue';
 import Employee from './components/Employee.vue';
 import Counter from './components/Counter.vue';
+import Greeting from './components/Greeting.vue';
 </script>
 
 <template>
@@ -17,6 +18,10 @@ import Counter from './components/Counter.vue';
       <Customer name="Shahab" age="45" designation="Huddersfield UK" />
       <Employee />
       <Counter />
+
+      <div class="mt-3">
+        <Greeting />
+      </div>
     </div>
   </div>
 </template>
