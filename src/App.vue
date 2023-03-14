@@ -1,7 +1,15 @@
 <script setup></script>
 
 <template>
-  <h1>Build using Vue version 3</h1>
+  <div class="container">
+    <div class="grid">
+      <div class="row">
+        <div class="col">
+          <p class="h2 text-success fw-bold">App Component three</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>
