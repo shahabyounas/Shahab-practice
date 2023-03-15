@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import { UserService } from '../services/UserService';
 export default {
   name: 'Register',
   data: () => ({
@@ -102,6 +103,14 @@ export default {
     },
     unsub: function () {
       this.isRegistered = false;
+    },
+    created: async function () {
+      try {
+        let resp = await UserService.getAllUsers();
+        console.log(resp);
+      } catch (err) {
+        console.log('error', err);
+      }
     },
   },
 };
