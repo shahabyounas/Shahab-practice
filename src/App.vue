@@ -4,6 +4,7 @@ import Employee from './components/Employee.vue';
 import Counter from './components/Counter.vue';
 import Greeting from './components/Greeting.vue';
 import Register from './components/Register.vue';
+import Loader from './components/Loader.vue';
 </script>
 
 <template>

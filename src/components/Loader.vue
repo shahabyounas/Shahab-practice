@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <p>Spinner</p>
-    <!-- <img src="../assets/vue.svg" alt="spinner" /> -->
+  <div class="d-flex">
+    <h2>Spinner Loading</h2>
+    <img src="../assets/vue.svg" alt="spinner" />
   </div>
 </template>
 

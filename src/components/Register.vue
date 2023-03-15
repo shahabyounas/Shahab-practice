@@ -1,5 +1,51 @@
+<script>
+import { UserService } from '../services/UserService';
+import Loader from './Loader.vue';
+import Customer from './Customer.vue';
+import axios from 'axios';
+export default {
+  name: 'Register',
+  components: { Loader },
+  data: () => ({
+    isRegistered: false,
+    isLoading: false,
+    errorMessage: '',
+    user: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    users: [],
+  }),
+
+  methods: {
+    register: function (data) {
+      this.isRegistered = true;
+      console.log(JSON.parse(JSON.stringify(data)));
+      this.users = [...this.users, JSON.parse(JSON.stringify(data))];
+    },
+    unsub: function () {
+      this.isRegistered = false;
+    },
+  },
+  created: async function () {
+    try {
+      this.isLoading = true;
+      let resp = await UserService.getAllUsers();
+      this.users = resp.data;
+      this.isLoading = false;
+    } catch (err) {
+      this.isLoading = false;
+      this.errorMessage = err;
+      console.log('error', err);
+    }
+  },
+};
+</script>
+
 <template>
   <pre>{{ this.user }} </pre>
+  <Loader />
   <div class="row">
     <div class="col">
       <table class="table table-hover text-center table-striped">
@@ -21,7 +67,7 @@
     </div>
   </div>
   <h2>Register</h2>
-  <Loader />
+  <Customer />
   <div class="container">
     <div>
       <p v-if="isRegistered" class="h4">You are already registerd user</p>
@@ -81,48 +127,5 @@
     </div>
   </div>
 </template>
-
-<script>
-import { UserService } from '../services/UserService';
-import Loader from './Loader.vue';
-import axios from 'axios';
-export default {
-  name: 'Register',
-  data: () => ({
-    isRegistered: false,
-    isLoading: false,
-    errorMessage: '',
-    user: {
-      name: '',
-      email: '',
-      password: '',
-    },
-    users: [],
-  }),
-
-  methods: {
-    register: function (data) {
-      this.isRegistered = true;
-      console.log(JSON.parse(JSON.stringify(data)));
-      this.users = [...this.users, JSON.parse(JSON.stringify(data))];
-    },
-    unsub: function () {
-      this.isRegistered = false;
-    },
-  },
-  created: async function () {
-    try {
-      this.isLoading = true;
-      let resp = await UserService.getAllUsers();
-      this.users = resp.data;
-      this.isLoading = false;
-    } catch (err) {
-      this.isLoading = false;
-      this.errorMessage = err;
-      console.log('error', err);
-    }
-  },
-};
-</script>
 
 <style></style>
