@@ -21,6 +21,7 @@
     </div>
   </div>
   <h2>Register</h2>
+  <Loader />
   <div class="container">
     <div>
       <p v-if="isRegistered" class="h4">You are already registerd user</p>
@@ -83,10 +84,14 @@
 
 <script>
 import { UserService } from '../services/UserService';
+import Loader from './Loader.vue';
+import axios from 'axios';
 export default {
   name: 'Register',
   data: () => ({
     isRegistered: false,
+    isLoading: false,
+    errorMessage: '',
     user: {
       name: '',
       email: '',
@@ -104,14 +109,18 @@ export default {
     unsub: function () {
       this.isRegistered = false;
     },
-    created: async function () {
-      try {
-        let resp = await UserService.getAllUsers();
-        console.log(resp);
-      } catch (err) {
-        console.log('error', err);
-      }
-    },
+  },
+  created: async function () {
+    try {
+      this.isLoading = true;
+      let resp = await UserService.getAllUsers();
+      this.users = resp.data;
+      this.isLoading = false;
+    } catch (err) {
+      this.isLoading = false;
+      this.errorMessage = err;
+      console.log('error', err);
+    }
   },
 };
 </script>
